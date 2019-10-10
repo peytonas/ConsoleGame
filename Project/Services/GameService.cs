@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ConsoleAdventure.Project.Interfaces;
 using ConsoleAdventure.Project.Models;
@@ -16,43 +17,54 @@ namespace ConsoleAdventure.Project
     }
     public void Go(string direction)
     {
-      throw new System.NotImplementedException();
+      string from = _game.CurrentRoom.Name;
+      _game.CurrentRoom = _game.CurrentRoom.Go(direction);
+      string to = _game.CurrentRoom.Name;
+      string desc = _game.CurrentRoom.Description;
+      if (from == to)
+      {
+        Messages.Add("do you like the idea of being eaten...? MOVE.");
+        return;
+      }
+      Messages.Add($"Traveled from {from} to {to}. {desc}");
     }
     public void Help()
     {
-      throw new System.NotImplementedException();
+      Messages.Add("Type: \ngo + (n)orth, (s)outh, (e)ast, (w)est: travel in specified direction.\nlook: repeats location and room description. \nq: closes application.");
     }
 
     public void Inventory()
     {
-      throw new System.NotImplementedException();
+      // throw new System.NotImplementedException();
     }
 
     public void Look()
     {
-      throw new System.NotImplementedException();
+      string current = _game.CurrentRoom.Name;
+      Messages.Add($"You're still in {current}");
+      // throw new System.NotImplementedException();
     }
 
     public void Quit()
     {
-      throw new System.NotImplementedException();
+      // throw new System.NotImplementedException();
     }
     ///<summary>
     ///Restarts the game 
     ///</summary>
     public void Reset()
     {
-      throw new System.NotImplementedException();
+      // throw new System.NotImplementedException();
     }
 
     public void Setup(string playerName)
     {
-      throw new System.NotImplementedException();
+      // throw new System.NotImplementedException();
     }
     ///<summary>When taking an item be sure the item is in the current room before adding it to the player inventory, Also don't forget to remove the item from the room it was picked up in</summary>
     public void TakeItem(string itemName)
     {
-      throw new System.NotImplementedException();
+      // throw new System.NotImplementedException();
     }
     ///<summary>
     ///No need to Pass a room since Items can only be used in the CurrentRoom
@@ -61,7 +73,7 @@ namespace ConsoleAdventure.Project
     ///</summary>
     public void UseItem(string itemName)
     {
-      throw new System.NotImplementedException();
+      // throw new System.NotImplementedException();
     }
   }
 }
