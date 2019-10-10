@@ -26,11 +26,13 @@ namespace ConsoleAdventure.Project
         Messages.Add("do you like the idea of being eaten...? MOVE.");
         return;
       }
-      Messages.Add($"Traveled from {from} to {to}. {desc}");
+      Messages.Add($@"Traveled from {from} to {to}. {desc}
+      
+      ");
     }
     public void Help()
     {
-      Messages.Add("Type: \ngo + (n)orth, (s)outh, (e)ast, (w)est: travel in specified direction.\nlook: repeats location and room description. \nq: closes application.");
+      Messages.Add("Type: \ngo + (n)orth, (s)outh, (e)ast, (w)est: travel in specified direction.\n(l)ook: repeats location and room description. \n(q)uit: quits application.");
     }
 
     public void Inventory()
@@ -41,8 +43,20 @@ namespace ConsoleAdventure.Project
     public void Look()
     {
       string current = _game.CurrentRoom.Name;
-      Messages.Add($"You're still in {current}");
-      // throw new System.NotImplementedException();
+      string desc = _game.CurrentRoom.Description;
+      Messages.Add($"You're still {current}. {desc}");
+    }
+    public void Search()
+    {
+      if (_game.CurrentRoom.Items.Count == 0)
+      {
+        Messages.Add("Nothing else to be found here...");
+        return;
+      }
+      foreach (Item i in _game.CurrentRoom.Items)
+      {
+        Messages.Add($"After some exploring you find {i.Name}. \n{i.Description}\n");
+      }
     }
 
     public void Quit()
@@ -64,6 +78,9 @@ namespace ConsoleAdventure.Project
     ///<summary>When taking an item be sure the item is in the current room before adding it to the player inventory, Also don't forget to remove the item from the room it was picked up in</summary>
     public void TakeItem(string itemName)
     {
+
+
+
       // throw new System.NotImplementedException();
     }
     ///<summary>

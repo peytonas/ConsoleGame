@@ -6,7 +6,6 @@ namespace ConsoleAdventure.Project.Models
   {
     public IRoom CurrentRoom { get; set; }
     public IPlayer CurrentPlayer { get; set; }
-
     //NOTE Make yo rooms here...
     public void Setup()
     {
@@ -25,7 +24,7 @@ namespace ConsoleAdventure.Project.Models
       c2.Exits.Add("s", s5);
       c2.Exits.Add("w", w3);
 
-      w3.Exits.Add("e", e4);
+      w3.Exits.Add("e", c2);
 
       e4.Exits.Add("w", c2);
 
@@ -33,7 +32,37 @@ namespace ConsoleAdventure.Project.Models
       s5.Exits.Add("s", b6);
 
       b6.Exits.Add("n", s5);
-      //NOTE add items to inventory
+      //NOTE initializes items 
+      Item r = new Item("a rock", "Your friends always made fun of you for hoarding, but they just don't understand. Better keep it.", w3);
+      Item d = new Item("some dino dookie", "Probably not as valuable as that rock, but you never know...", w3);
+      Item p = new Item("a sheet of paper", "A mysterious, single sheet of paper with faded, handwritten characters. It reads 'it's dangerous to go alone, take this.'", n1);
+      Item s = new Item("a pair of scissors", "You probably shouldn't run around with these, but they seem important.", e4);
+      //NOTE assign items to rooms
+      n1.Items.Add(p);
+      w3.Items.Add(d);
+      w3.Items.Add(r);
+      e4.Items.Add(s);
+      //NOTE initialize room images
+      Image rk = new Image($@"
+
+                 .((/(((*(/(.                           
+                ((%%((((/(/((*//*(/*                       
+             #%(#((((((/((/(///*/***((/                    
+           ((/(*#%(((((((/     ,***((/(%.                  
+         #(((*(/(#(##((((((((/((,                          
+       *(((#/((#%(%%((/(((/%(((((((((((((((.               
+      *(/(((%((#%/#%%%%(/(((((//((((#((#((#(/              
+     *((/(#*(#((((/%(((#((#/(((/((((#(((/%(((%             
+    .(((((((#((((*%##((((/.       ,((((#((##(((            
+    ((((#(#(*((//(#(#/(*(//(/((##((%#%%%%%%((((*           
+   .((((*((((/*/(/*(**/**#/(*((*(%%(%#%%%%(%%(/(%          
+   (/,.     ,*((((*(***./(/*((/#/((%%%%%%%#(%((% #/((((    
+   (((/(*/(/(/((/*/***,  ,*((/(((/%%%%%#%%%%((# (( (((((   
+
+      ");
+      //NOTE assign images to rooms
+      e4.Images.Add(rk);
+
 
 
       //NOTE starting point

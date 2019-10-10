@@ -35,7 +35,7 @@ namespace ConsoleAdventure.Project.Controllers
     public void GetUserInput()
     {
       Console.WriteLine(@"
-What would you like to do?
+What do you do?
 (type 'h' for help)
 ");
       string input = Console.ReadLine().ToLower() + " ";
@@ -44,10 +44,16 @@ What would you like to do?
       //NOTE this will take the user input and parse it into a command and option.
       switch (command)
       {
+        // TODO case "t":
+        //   _gameService.TakeItem();
+        //   break;
+        case "s":
+          _gameService.Search();
+          break;
         case "h":
           _gameService.Help();
           break;
-        case "look":
+        case "l":
           _gameService.Look();
           break;
         case "go":

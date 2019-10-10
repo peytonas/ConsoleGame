@@ -7,7 +7,8 @@ namespace ConsoleAdventure.Project.Interfaces
   {
     string Name { get; set; }
     string Description { get; set; }
-    List<Item> Items { get; set; }
+    List<IItem> Items { get; set; }
+    Dictionary<string, IImage> Images { get; set; }
     Dictionary<string, IRoom> Exits { get; set; }
     IRoom Go(string direction);
   }
