@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using ConsoleAdventure.Project.Models;
 
 namespace ConsoleAdventure.Project.Interfaces
 {
@@ -8,8 +7,8 @@ namespace ConsoleAdventure.Project.Interfaces
     string Name { get; set; }
     string Description { get; set; }
     List<IItem> Items { get; set; }
-    Dictionary<string, IImage> Images { get; set; }
     Dictionary<string, IRoom> Exits { get; set; }
+    Dictionary<string, IRoom> Images { get; set; }
     IRoom Go(string direction);
   }
 }

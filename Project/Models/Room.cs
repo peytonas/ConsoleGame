@@ -8,8 +8,9 @@ namespace ConsoleAdventure.Project.Models
     public string Name { get; set; }
     public string Description { get; set; }
     public List<IItem> Items { get; set; }
-    public Dictionary<string, IImage> Images { get; set; }
     public Dictionary<string, IRoom> Exits { get; set; }
+    public Dictionary<string, IRoom> Images { get; set; }
+
     public void AddExit(IRoom room)
     {
       Exits.Add(room.Name, room);
@@ -27,8 +28,8 @@ namespace ConsoleAdventure.Project.Models
       Name = name;
       Description = description;
       Items = new List<IItem>();
-      Images = new Dictionary<string, IImage>();
       Exits = new Dictionary<string, IRoom>();
+      Images = new Dictionary<string, IRoom>();
     }
   }
 }
