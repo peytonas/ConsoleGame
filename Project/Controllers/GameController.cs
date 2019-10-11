@@ -14,6 +14,20 @@ namespace ConsoleAdventure.Project.Controllers
     public void Run()
     {
       Console.Clear();
+      Console.ForegroundColor = ConsoleColor.DarkGreen;
+      Console.WriteLine(@"
+▄▄▄██▀▀▀█    ██  ███▄    █   ▄████  ██▓    ▓█████     ▄▄▄██▀▀▀▒█████   █    ██  ██▀███   ███▄    █ ▓█████▓██   ██▓
+   ▒██   ██  ▓██▒ ██ ▀█   █  ██▒ ▀█▒▓██▒    ▓█   ▀       ▒██  ▒██▒  ██▒ ██  ▓██▒▓██ ▒ ██▒ ██ ▀█   █ ▓█   ▀ ▒██  ██▒
+   ░██  ▓██  ▒██░▓██  ▀█ ██▒▒██░▄▄▄░▒██░    ▒███         ░██  ▒██░  ██▒▓██  ▒██░▓██ ░▄█ ▒▓██  ▀█ ██▒▒███    ▒██ ██░
+▓██▄██▓ ▓▓█  ░██░▓██▒  ▐▌██▒░▓█  ██▓▒██░    ▒▓█  ▄    ▓██▄██▓ ▒██   ██░▓▓█  ░██░▒██▀▀█▄  ▓██▒  ▐▌██▒▒▓█  ▄  ░ ▐██▓░
+ ▓███▒  ▒▒█████▓ ▒██░   ▓██░░▒▓███▀▒░██████▒░▒████▒    ▓███▒  ░ ████▓▒░▒▒█████▓ ░██▓ ▒██▒▒██░   ▓██░░▒████▒ ░ ██▒▓░
+ ▒▓▒▒░  ░▒▓▒ ▒ ▒ ░ ▒░   ▒ ▒  ░▒   ▒ ░ ▒░▓  ░░░ ▒░ ░    ▒▓▒▒░  ░ ▒░▒░▒░ ░▒▓▒ ▒ ▒ ░ ▒▓ ░▒▓░░ ▒░   ▒ ▒ ░░ ▒░ ░  ██▒▒▒ 
+ ▒ ░▒░  ░░▒░ ░ ░ ░ ░░   ░ ▒░  ░   ░ ░ ░ ▒  ░ ░ ░  ░    ▒ ░▒░    ░ ▒ ▒░ ░░▒░ ░ ░   ░▒ ░ ▒░░ ░░   ░ ▒░ ░ ░  ░▓██ ░▒░ 
+ ░ ░ ░   ░░░ ░ ░    ░   ░ ░ ░ ░   ░   ░ ░      ░       ░ ░ ░  ░ ░ ░ ▒   ░░░ ░ ░   ░░   ░    ░   ░ ░    ░   ▒ ▒ ░░  
+ ░   ░     ░              ░       ░     ░  ░   ░  ░    ░   ░      ░ ░     ░        ░              ░    ░  ░░ ░     
+                                                                                                           ░ ░     
+      ");
+      Console.ForegroundColor = ConsoleColor.DarkRed;
       Console.WriteLine("You awake lying under a giant fallen log, in the middle of a sweltering junglescape...What's the plan?");
       while (true)
       {
@@ -47,8 +61,8 @@ What do you do?
         // TODO case "t":
         //   _gameService.TakeItem();
         //   break;
-        case "s":
-          _gameService.Search();
+        case "i":
+          _gameService.Inspect();
           break;
         case "h":
           _gameService.Help();
