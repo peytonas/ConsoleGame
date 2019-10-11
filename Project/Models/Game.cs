@@ -5,6 +5,7 @@ namespace ConsoleAdventure.Project.Models
   public class Game : IGame
   {
     public IRoom CurrentRoom { get; set; }
+
     public IPlayer CurrentPlayer { get; set; }
     //NOTE Make yo rooms here...
     public void Setup()
@@ -13,7 +14,21 @@ namespace ConsoleAdventure.Project.Models
       Room n1 = new Room("north", "Back where you started, better keep exploring...");
       Room c2 = new Room("center", "You're still not sure how you got here, but heading east or west seem to be your best options...");
       Room w3 = new Room("west", "A large bush blocks your view of anything beyond it...");
-      Room e4 = new Room("east", "A nice boulder is all you can see at first glance...");
+      Room e4 = new Room("east", @"A nice boulder is all you can see at first glance...
+                 .((/(((*(/(.                           
+                ((%%((((/(/((*//*(/*                       
+             #%(#((((((/((/(///*/***((/                    
+           ((/(*#%(((((((/     ,***((/(%.                  
+         #(((*(/(#(##((((((((/((,                          
+       *(((#/((#%(%%((/(((/%(((((((((((((((.               
+      *(/(((%((#%/#%%%%(/(((((//((((#((#((#(/              
+     *((/(#*(#((((/%(((#((#/(((/((((#(((/%(((%             
+    .(((((((#((((*%##((((/.       ,((((#((##(((            
+    ((((#(#(*((//(#(#/(*(//(/((##((%#%%%%%%((((*           
+   .((((*((((/*/(/*(**/**#/(*((*(%%(%#%%%%(%%(/(%          
+   (/,.     ,*((((*(***./(/*((/#/((%%%%%%%#(%((% #/((((    
+   (((/(*/(/(/((/*/***,  ,*((/(((/%%%%%#%%%%((# (( (((((   
+      ");
       Room s5 = new Room("south", "Nothing notable besides some thick underbrush in the near distance...");
       Room b6 = new Room("final", "A tyrannosaurus looms above you. Holding still won't help, no matter what the movies taught you...");
       //NOTE initializes relationships between rooms
@@ -43,9 +58,23 @@ namespace ConsoleAdventure.Project.Models
       w3.Items.Add(r);
       e4.Items.Add(s);
       //NOTE initialize room images
-      Image rk = new Image("boulder", "a nice boulder", e4);
+      //     Image rk = new Image("boulder", @"
+      //                .((/(((*(/(.                           
+      //               ((%%((((/(/((*//*(/*                       
+      //            #%(#((((((/((/(///*/***((/                    
+      //          ((/(*#%(((((((/     ,***((/(%.                  
+      //        #(((*(/(#(##((((((((/((,                          
+      //      *(((#/((#%(%%((/(((/%(((((((((((((((.               
+      //     *(/(((%((#%/#%%%%(/(((((//((((#((#((#(/              
+      //    *((/(#*(#((((/%(((#((#/(((/((((#(((/%(((%             
+      //   .(((((((#((((*%##((((/.       ,((((#((##(((            
+      //   ((((#(#(*((//(#(#/(*(//(/((##((%#%%%%%%((((*           
+      //  .((((*((((/*/(/*(**/**#/(*((*(%%(%#%%%%(%%(/(%          
+      //  (/,.     ,*((((*(***./(/*((/#/((%%%%%%%#(%((% #/((((    
+      //  (((/(*/(/(/((/*/***,  ,*((/(((/%%%%%#%%%%((# (( (((((   
+      //     ", e4);
       //NOTE assign images to rooms
-      e4.Images.Add("e", e4);
+      // e4.Images.Add("desc", e4);
 
 
 

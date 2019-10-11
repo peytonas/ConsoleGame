@@ -8,6 +8,7 @@ namespace ConsoleAdventure.Project
   public class GameService : IGameService
   {
     private IGame _game { get; set; }
+    // private IImage _image { get; set; }
 
     public List<string> Messages { get; set; }
     public GameService()
@@ -26,9 +27,7 @@ namespace ConsoleAdventure.Project
         Messages.Add("do you like the idea of being eaten...? MOVE.");
         return;
       }
-      Messages.Add($@"Traveled from {from} to {to}. {desc}
-      
-      ");
+      Messages.Add($@"Traveled from {from} to {to}. {desc}");
     }
     public void Help()
     {
@@ -50,7 +49,7 @@ namespace ConsoleAdventure.Project
     {
       if (_game.CurrentRoom.Items.Count == 0)
       {
-        Messages.Add("Nothing else to be found here...");
+        Messages.Add("Nothing to be found here...");
         return;
       }
       foreach (Item i in _game.CurrentRoom.Items)
