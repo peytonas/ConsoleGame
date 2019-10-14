@@ -36,9 +36,9 @@ namespace ConsoleAdventure.Project
       if (to == "west")
       {
         Item Item = _game.CurrentPlayer.Inventory.Find(x => x.Name == "scissors");
-        if (_game.CurrentRoom.Blocked == true && Item.Name != "scissors")
+        if (_game.CurrentRoom.Blocked == true && Item == null)
         {
-          Messages.Add(@"You startle a peaceful Stegosaurus feeding with her babies...In her fear, she rampages and you find yourself impaled by the massive spikes in her tail...
+          Messages.Add(@"Due to your loud and clumsy stumbling through the vegetation, you manage to startle a peaceful Stegosaurus feeding with her babies...In her fear, she rampages and you find yourself impaled by the massive spikes in her tail...
                                                        .*                                                    
                               ,((((,.   *#%##%%,%%(,  %%%##(                                                 
                               .#%%%%%&&%(((#%####%%%#(%#%%###.   .(                                          
@@ -76,13 +76,12 @@ namespace ConsoleAdventure.Project
                                                                 ......(###(((#...                            
                                                                       .(#*(/(#(/.                            
                                                                        #(((((,*(,       
-          !!!!GAME OVER!!!!");
-          // GameOver();
+!!!!GAME OVER!!!!");
         }
         else if (_game.CurrentRoom.Blocked == true)
         {
           UseItem("scissors");
-          _game.CurrentRoom.Blocked = false;
+          // _game.CurrentRoom.Blocked = false;
         }
 
       }
@@ -98,7 +97,7 @@ namespace ConsoleAdventure.Project
         }
         else if (inv == 3)
         {
-          Messages.Add("Thanks to the necessary relics you found, you successfully defeat the mighty tyrannosaurus and are able to continue your journey towards regaining your memory in peace...For now...\n****YOU WIN****\n");
+          Messages.Add("Thanks to the relics, you successfully defeat the mighty tyrannosaurus and are able to continue your journey towards regaining your memory in peace...For now...\n****YOU WIN****\n");
         }
         // GameOver();
       }
@@ -185,12 +184,13 @@ namespace ConsoleAdventure.Project
         {
           if (i.Name.ToLower() == "scissors")
           {
+            Messages.Add("You stealthily cut through the brush in front of you and find a clearing. \nGentle thuds fade in the distance...Good thing you didn't come bursting in here without those scissors!");
             _game.CurrentRoom.Blocked = false;
-            Messages.Add("You stealthily chop down the brush in front of you and find a clearing. Gentle thuds fade in the distance...Good thing you didn't come bursting in here without those scissors!");
           }
-          // else
+          // else if (i.Name.ToLower() != "scissors")
           // {
-          //   Messages.Add("You don't have any way to cut through here...Better look around elsewhere first.");
+          //   _game.CurrentRoom.Blocked = true;
+          //   Messages.Add("you ded by stego");
           // }
         }
       }

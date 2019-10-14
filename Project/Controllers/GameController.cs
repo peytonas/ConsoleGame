@@ -12,7 +12,6 @@ namespace ConsoleAdventure.Project.Controllers
 
     //NOTE Makes sure everything is called to finish Setup and Starts the Game loop
     //FIXME data belongs in the service
-    private bool playing = true;
     public void Run()
     {
       Console.Clear();

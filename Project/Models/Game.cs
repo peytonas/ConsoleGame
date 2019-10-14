@@ -122,7 +122,7 @@ A tyrannosaurus looms above you. Holding still won't help, no matter what the mo
       //NOTE initializes player
       Player ps = new Player("Peyton");
       //NOTE initializes items 
-      Item r = new Item("rock", @"----Just a rock. Your friends always made fun of you for hoarding, but they just don't understand. Better keep it.----
+      Item r = new Item("rock", @"----Just a rock. Your friends always made fun of you for hoarding, but they don't understand. Better keep it.----
                                  ..,,,,                    
                         ,**,,*,,,,,,,,***                  
                      **,,***/,,,****,*,*//,                
