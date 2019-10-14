@@ -76,7 +76,8 @@ namespace ConsoleAdventure.Project
                                                                 ......(###(((#...                            
                                                                       .(#*(/(#(/.                            
                                                                        #(((((,*(,       
-!!!!GAME OVER!!!!");
+!!!!GAME OVER!!!!Play again?
+Type yes/no");
         }
         else if (_game.CurrentRoom.Blocked == true)
         {
@@ -89,22 +90,22 @@ namespace ConsoleAdventure.Project
       {
         if (inv == 0)
         {
-          Messages.Add("The mighty tyrannosaurus notices you immediately. With nothing to defend yourself, your final moments are fleeting. A deafening roar is all you hear before it ends...\n!!!!GAME OVER!!!!\n");
+          Messages.Add("The mighty tyrannosaurus notices you immediately. With nothing to defend yourself, your final moments are fleeting. A deafening roar is all you hear before it ends...\n!!!!GAME OVER!!!!\nPlay again?\nType yes/no");
         }
         if (inv < 3 && inv > 0)
         {
-          Messages.Add("The mighty tyrannosaurus notices you immediately. Without all the relics to defend yourself, your final moments are fleeting. A deafening roar is all you hear before it ends...\n!!!!GAME OVER!!!!\n");
+          Messages.Add("The mighty tyrannosaurus notices you immediately. Without all the relics to defend yourself, your final moments are fleeting. A deafening roar is all you hear before it ends...\n!!!!GAME OVER!!!!\nPlay again?\nType yes/no");
         }
         else if (inv == 3)
         {
-          Messages.Add("Thanks to the relics, you successfully defeat the mighty tyrannosaurus and are able to continue your journey towards regaining your memory in peace...For now...\n****YOU WIN****\n");
+          Messages.Add("Thanks to the relics, you successfully defeat the mighty tyrannosaurus and are able to continue your journey towards regaining your memory in peace...For now...\n****YOU WIN****\nPlay again?\nType yes/no");
         }
         // GameOver();
       }
     }
     public void Help()
     {
-      Messages.Add("Type:\ngo + (n)orth, (s)outh, (e)ast, (w)est: travel in specified direction\n(l)ook: repeats location and room description\n(s)earch: searches the immediate area for hints\n(t)ake: takes item found in current room\n(i)nventory: checks player inventory\n(u)se: uses an item in your inventory\n(q)uit: quits application");
+      Messages.Add("Type:\ngo + north, south, east, west: travel in specified direction\n(l): repeats location and room description\n(s): searches the immediate area for hints\ntake + item name: takes item found in current room\n(i)nventory: checks player inventory\nreset/yes: starts game over at beginning\n(q)/no: quits application");
     }
     public void Inventory()
     {
@@ -142,6 +143,7 @@ namespace ConsoleAdventure.Project
     ///</summary>
     public void Reset()
     {
+      _game.CurrentPlayer.Inventory.Clear();
       // throw new System.NotImplementedException();
     }
 
@@ -194,11 +196,6 @@ namespace ConsoleAdventure.Project
           // }
         }
       }
-    }
-    public void GameOver()
-    {
-      Console.Clear();
-      Console.WriteLine("Play again? (y) / (n)");
     }
   }
 }

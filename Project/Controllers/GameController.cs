@@ -14,6 +14,7 @@ namespace ConsoleAdventure.Project.Controllers
     //FIXME data belongs in the service
     public void Run()
     {
+      _gameService.Reset();
       Console.Clear();
       Console.ForegroundColor = ConsoleColor.DarkGreen;
       Console.WriteLine(@"
@@ -60,16 +61,9 @@ What do you do?
       //FIXME you have to end the game at some point
       switch (command)
       {
-        // case "y":
-        //   _gameService.Reset();
-        //   break;
         case "use":
           _gameService.UseItem(option);
           break;
-        // FIXME remove this handle the yes no elsewhere
-        // case "n":
-        //   Environment.Exit(0);
-        //   break;
         case "take":
           _gameService.TakeItem(option);
           Print();
@@ -88,6 +82,10 @@ What do you do?
           break;
         case "go":
           _gameService.Go(option);
+          break;
+        case "reset":
+        case "yes":
+          Run();
           break;
         case "q":
         case "quit":
