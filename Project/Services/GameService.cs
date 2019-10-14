@@ -18,7 +18,7 @@ namespace ConsoleAdventure.Project
     }
     public void Go(string direction)
     {
-      Console.ForegroundColor = ConsoleColor.DarkRed;
+      Console.ForegroundColor = ConsoleColor.Red;
       string from = _game.CurrentRoom.Name;
       _game.CurrentRoom = _game.CurrentRoom.Go(direction);
       string to = _game.CurrentRoom.Name;
@@ -32,7 +32,7 @@ namespace ConsoleAdventure.Project
     }
     public void Help()
     {
-      Messages.Add("Type:\ngo + (n)orth, (s)outh, (e)ast, (w)est: travel in specified direction.\n(l)ook: repeats location and room description.\n(i)nspect: searches the immediate area for hints\n(q)uit: quits application.");
+      Messages.Add("Type:\ngo + (n)orth, (s)outh, (e)ast, (w)est: travel in specified direction\n(l)ook: repeats location and room description\n(t)ake: takes item found in current room\n(i)nspect: searches the immediate area for hints\n(q)uit: quits application");
     }
 
     public void Inventory()
@@ -68,6 +68,7 @@ namespace ConsoleAdventure.Project
     ///</summary>
     public void Reset()
     {
+
       // throw new System.NotImplementedException();
     }
 

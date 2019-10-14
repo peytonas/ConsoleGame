@@ -11,8 +11,8 @@ namespace ConsoleAdventure.Project.Models
     public void Setup()
     {
       // NOTE initializes rooms
-      Room n1 = new Room("north", @"Back where you started, better keep exploring...");
-      Room c2 = new Room("center", @"You're still not sure how you got here, but heading east or west seem to be your best options...");
+      Room n1 = new Room("north", @"This is where you started, better keep exploring...");
+      Room c2 = new Room("center", @"You're still not sure how you got here, but you feel drawn to the south...");
       Room w3 = new Room("west", @"A large bush blocks your view of anything beyond it...
                         *( #                               
                        ((((((((/*                          
