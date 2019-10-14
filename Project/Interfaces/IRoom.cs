@@ -8,7 +8,7 @@ namespace ConsoleAdventure.Project.Interfaces
     string Description { get; set; }
     List<IItem> Items { get; set; }
     Dictionary<string, IRoom> Exits { get; set; }
-    Dictionary<string, IRoom> Images { get; set; }
+    bool Blocked { get; set; }
     IRoom Go(string direction);
   }
 }

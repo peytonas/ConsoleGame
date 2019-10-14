@@ -11,6 +11,8 @@ namespace ConsoleAdventure.Project.Controllers
     private GameService _gameService = new GameService();
 
     //NOTE Makes sure everything is called to finish Setup and Starts the Game loop
+    //FIXME data belongs in the service
+    private bool playing = true;
     public void Run()
     {
       Console.Clear();
@@ -56,13 +58,28 @@ What do you do?
       string command = input.Substring(0, input.IndexOf(" "));
       string option = input.Substring(input.IndexOf(" ") + 1).Trim();
       //NOTE this will take the user input and parse it into a command and option.
+      //FIXME you have to end the game at some point
       switch (command)
       {
-        case "t":
-          // _gameService.TakeItem();
+        // case "y":
+        //   _gameService.Reset();
+        //   break;
+        case "use":
+          _gameService.UseItem(option);
+          break;
+        // FIXME remove this handle the yes no elsewhere
+        // case "n":
+        //   Environment.Exit(0);
+        //   break;
+        case "take":
+          _gameService.TakeItem(option);
+          Print();
+          break;
+        case "s":
+          _gameService.Search();
           break;
         case "i":
-          _gameService.Inspect();
+          _gameService.Inventory();
           break;
         case "h":
           _gameService.Help();
@@ -87,7 +104,11 @@ What do you do?
     //NOTE this should print your messages for the game.
     private void Print()
     {
-
+      foreach (string message in _gameService.Messages)
+      {
+        Console.WriteLine(message);
+      }
+      //REVIEW the controller shouldnt clear the message log
     }
   }
 }

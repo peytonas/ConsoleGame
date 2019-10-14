@@ -7,5 +7,6 @@ namespace ConsoleAdventure.Project.Interfaces
     IRoom Location { get; set; }
     string Name { get; set; }
     string Description { get; set; }
+    bool Effect { get; set; }
   }
 }

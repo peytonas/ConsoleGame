@@ -10,7 +10,7 @@ namespace ConsoleAdventure.Project.Models
     public string Description { get; set; }
     public List<IItem> Items { get; set; }
     public Dictionary<string, IRoom> Exits { get; set; }
-    public Dictionary<string, IRoom> Images { get; set; }
+    public bool Blocked { get; set; }
 
     public void AddExit(IRoom room)
     {
@@ -24,13 +24,13 @@ namespace ConsoleAdventure.Project.Models
       }
       return this;
     }
-    public Room(string name, string description)
+    public Room(string name, string description, bool blocked)
     {
       Name = name;
       Description = description;
       Items = new List<IItem>();
       Exits = new Dictionary<string, IRoom>();
-      Images = new Dictionary<string, IRoom>();
+      Blocked = blocked;
     }
   }
 }
