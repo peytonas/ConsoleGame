@@ -9,6 +9,7 @@ namespace ConsoleAdventure.Project.Controllers
   public class GameController : IGameController
   {
     private GameService _gameService = new GameService();
+    private bool playing = true;
 
     //NOTE Makes sure everything is called to finish Setup and Starts the Game loop
     //FIXME data belongs in the service
@@ -31,7 +32,8 @@ namespace ConsoleAdventure.Project.Controllers
       ");
       Console.ForegroundColor = ConsoleColor.Red;
       Console.WriteLine("You awake lying under a giant fallen log, in the middle of a sweltering junglescape...What's the plan?");
-      while (true)
+      Print();
+      while (playing)
       {
         GetUserInput();
         Update();
@@ -57,6 +59,7 @@ What do you do?
       string input = Console.ReadLine().ToLower() + " ";
       string command = input.Substring(0, input.IndexOf(" "));
       string option = input.Substring(input.IndexOf(" ") + 1).Trim();
+      Console.Clear();
       //NOTE this will take the user input and parse it into a command and option.
       //FIXME you have to end the game at some point
       switch (command)
@@ -66,7 +69,6 @@ What do you do?
           break;
         case "take":
           _gameService.TakeItem(option);
-          Print();
           break;
         case "s":
           _gameService.Search();

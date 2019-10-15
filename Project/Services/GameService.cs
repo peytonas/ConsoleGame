@@ -38,7 +38,8 @@ namespace ConsoleAdventure.Project
         Item Item = _game.CurrentPlayer.Inventory.Find(x => x.Name == "scissors");
         if (_game.CurrentRoom.Blocked == true && Item == null)
         {
-          Messages.Add(@"Due to your loud and clumsy stumbling through the vegetation, you manage to startle a peaceful Stegosaurus feeding with her babies...In her fear, she rampages and you find yourself impaled by the massive spikes in her tail...
+          Messages.Add(@"
+
                                                        .*                                                    
                               ,((((,.   *#%##%%,%%(,  %%%##(                                                 
                               .#%%%%%&&%(((#%####%%%#(%#%%###.   .(                                          
@@ -75,7 +76,9 @@ namespace ConsoleAdventure.Project
                                          .(,*#(**(#/(...............*#((/(((#///.                            
                                                                 ......(###(((#...                            
                                                                       .(#*(/(#(/.                            
-                                                                       #(((((,*(,       
+                                                                       #(((((,*(,      
+
+Due to your loud and clumsy stumbling through the vegetation, you manage to startle a peaceful Stegosaurus feeding with her babies...In her fear, she rampages and you find yourself impaled by the massive spikes in her tail...
 !!!!GAME OVER!!!!Play again?
 Type yes/no");
         }
@@ -144,7 +147,10 @@ Type yes/no");
     public void Reset()
     {
       _game.CurrentPlayer.Inventory.Clear();
-      // throw new System.NotImplementedException();
+      if (_game.CurrentRoom.Name != "north")
+      {
+        _game.Setup();
+      }
     }
 
     public void Setup(string playerName)
@@ -189,11 +195,6 @@ Type yes/no");
             Messages.Add("You stealthily cut through the brush in front of you and find a clearing. \nGentle thuds fade in the distance...Good thing you didn't come bursting in here without those scissors!");
             _game.CurrentRoom.Blocked = false;
           }
-          // else if (i.Name.ToLower() != "scissors")
-          // {
-          //   _game.CurrentRoom.Blocked = true;
-          //   Messages.Add("you ded by stego");
-          // }
         }
       }
     }
