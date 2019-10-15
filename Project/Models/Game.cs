@@ -13,25 +13,13 @@ namespace ConsoleAdventure.Project.Models
     {
       // NOTE initializes rooms
       Room n1 = new Room("north", @"
-This is where you woke up...Better take a look around before you leave...", false);
+This is where you woke up...Better take a look around before you head south...", false);
       Room c2 = new Room("center", @"
 You're still not sure how you got here, but you feel drawn to the south...
 To the west is some jungle growth too thick to see through...
 To the east is a large object; it's too far to tell what it is from here... ", false);
       Room w3 = new Room("west", @"
 Jungle growth still obscures your view of anything beyond it...
-                        *( #                               
-                       ((((((((/*                          
-              *.   /(((((((###(####                        
-          (((((((((( (((((((((((((###(#                    
-       (((((((((((/(/(#(((((#((((((#(((#######             
-     (((((#(((((/|///((((((((((((((#((((((((#(##((####     
-    *((((((((((((///|///((((((/##(((#((((((((#((#(##(##     
- ((/(((((((((/(((//(///|//(/((/(/((((((((((#((((((###/(  
-///|/(//|///((/|///(\|///(//(|//|///|//|//(//((#((((/(((#(((#/ 
-  ///(///|///|///|//|//(///|///*/|/(/|/(|(/(((((|((((((#(\\///
-    //|///|///((/|///|/|///|///(|///|/|/|/|/|/||/|//(/(((((((((( 
-     /|      //| ///|///||///*/|//|///*/*//*///* /           
       ", true);
       Room e4 = new Room("east", @"
 Turns out that large object was nothing more than a nice boulder. It's all you see at first glance...

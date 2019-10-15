@@ -11,8 +11,6 @@ namespace ConsoleAdventure.Project
     private IGame _game { get; set; }
 
     public List<string> Messages { get; set; }
-    private bool playing = true;
-
     public GameService()
     {
       _game = new Game();
@@ -32,77 +30,14 @@ namespace ConsoleAdventure.Project
         return;
       }
       Messages.Add($@"Traveled from {from} to {to}. {desc}");
-      // REVIEW No need to iterate more than once here... just use a find
-      if (to == "west")
+      if (to == "west" || to == "final")
       {
-        Item Item = _game.CurrentPlayer.Inventory.Find(x => x.Name == "scissors");
-        if (_game.CurrentRoom.Blocked == true && Item == null)
-        {
-          Messages.Add(@"
-
-                                                       .*                                                    
-                              ,((((,.   *#%##%%,%%(,  %%%##(                                                 
-                              .#%%%%%&&%(((#%####%%%#(%#%%###.   .(                                          
-                                .%%%%%%%%%%((#/##%%%%%(#((#(%(   ##//                                        
-                                  #%%%&&%%%&%#/%##%%%%%%(&%#*(/ (%(//(#                                      
-                          .%%%%%%, ,#%%%%&%##%(#%%#%&&&%#(%#((/ %##(//((                                     
-                           %#(#%#%%%%#%%####%##%//&&%%&%##(%&%/%(/(((//                                    
-                            #%%#%%%%%%%%%%%(((%%#(#%%%#%%%%####/###((#(                                    
-                             %#%###(%%#%#&&&%#(((%#(###&(#&%%%%#%%/####(   #((/                              
-                             %%#%%(((####%%%##//(#(#(%(#(%%&%#%%#(%((  %#(((/.                             
-                      *(##%(((&&%(%&%#%#%#%#(*((/((((##(#((%%(#%&&%(%, %%##(/(#/                             
-                       #/######%&%#((/(###/#***/#/(///((((%%%#%%%%%%#(,%%#%%#(/*                             
-                        (##(*(#(((/((/(#((*/,*///(//#//*#*%//%#(&(%%%%%%%%(#(/*.                             
-                   ,/,  #&#(/(***/(*(((/,.(///*,///#(//(###/%#(%%%%%##/%##(((                              
-                  /(((((#%#(((/*/,,*//#((/*,**/(/*/***((/*,/#(##/#%&&%##%#%.                               
-     .*           //%/*((%/*,,,,.,**//((//*,,*,/**///*,**((*/*#//(###(%%%(%%%#                               
-      #/            #%#%/*,,,**//((#(#((/,,,/,*(***/**,***,(/*#(/(%/%#%#%#(##%%#(#                           
-       #/, //       #(((,,*/***///(((#////,**,*//*.***,,,,***,*(((##/%###&%%#%%%#                            
-       .##,/(#   .%/**,**/*((//((//.. ///*,,/*,*/,,/,,*,.***,,,///((#(#(#&&%#(%&..                           
-         #(/,((////,**//(((*          .(****,,.***,,,,*,,,*,.***/(%(((/##((%#&%%#%#(*#,    ,####%%((/*.      
-            (/*,,**///(/.              */****..//**,,**.*/**.,.**(#(//(/(/#(#%%&&%&%%####%##(**,***/,.     
-             .((///(,                  ,**/,/.,*/,***,,*/,,,*,*,/*((/*//((((((#%%###///#(*(*/*(/***//(       
-                                        */**,,./*#*****,.,*,.,,**/(/((*#/#*(((#///(///***/,*,,/(//*///.      
-                                         *****,,//&,,*,,*,*,*,*,*(//#//**/*//(*/*,*,**////(.                 
-                                         ,//**,**/#/(****,*.,.,,,*(///**,,***/(/,////(/                      
-                                         *******/((%%%%#((((/(/(((,/(**,,*****///////                        
-                                          (/**(//(#&&&&&( .(((((/.,*****(((//((//(,                          
-                                          .((/((((&&&&&(        *,,,,,,,/(###.                               
-                                           /(#/(((%%&&&%        **,,,,,*####(.                               
-                                           %%#(#(%%%%%%&%*      /*(//,*((((#(                                
-                       . .................*%##%%%%%&%#%#,....   /*/,**//(((/(                                
-                                     ......%%%&%(%%,,,.........../*/*////((#%.                               
-                                      ..../#((%(###%/,........,.,.*((/(//(/#%%.                              
-                                         .(,*#(**(#/(...............*#((/(((#///.                            
-                                                                ......(###(((#...                            
-                                                                      .(#*(/(#(/.                            
-                                                                       #(((((,*(,      
-                                                                       
-Due to your loud and clumsy stumbling through the vegetation, you manage to startle a peaceful Stegosaurus feeding with her babies...In her fear, she rampages and you find yourself impaled by the massive spikes in her tail...
-!!!!GAME OVER!!!!Play again?
-Type yes/no");
-        }
-      }
-      if (to == "final")
-      {
-        if (inv == 0)
-        {
-          Messages.Add("The mighty tyrannosaurus notices you immediately. With nothing to defend yourself, your final moments are fleeting. A deafening roar is all you hear before it ends...\n!!!!GAME OVER!!!!\nPlay again?\nType yes/no");
-        }
-        if (inv < 3 && inv > 0)
-        {
-          Messages.Add("The mighty tyrannosaurus notices you immediately. Without all the relics to defend yourself, your final moments are fleeting. A deafening roar is all you hear before it ends...\n!!!!GAME OVER!!!!\nPlay again?\nType yes/no");
-        }
-        else if (inv == 3)
-        {
-          Messages.Add("Thanks to the relics, you successfully defeat the mighty tyrannosaurus and are able to continue your journey towards regaining your memory in peace...For now...\n****YOU WIN****\nPlay again?\nType yes/no");
-        }
-        // GameOver();
+        GameOver();
       }
     }
     public void Help()
     {
-      Messages.Add("Type:\ngo + north, south, east, west: travel in specified direction\n(l): repeats location and room description\n(s): searches the immediate area for hints\ntake + item name: takes item found in current room\n(i)nventory: checks player inventory\nreset/yes: starts game over at beginning\n(q)/no: quits application");
+      Messages.Add("Type:\ngo + north, south, east, west: travel in specified direction\n(l): repeats location and room description\n(s): searches the immediate area for hints\ntake + item name: takes item found in current room\n(i): checks player inventory\nuse + item name: uses an item in your inventory\nreset/yes: starts game over at beginning\n(q)/no: quits application");
     }
     public void Inventory()
     {
@@ -178,6 +113,92 @@ Type yes/no");
     ///Make sure you validate the item is in the room or player inventory before
     ///being able to use the item
     ///</summary>
+    public void Print()
+    {
+      foreach (string message in Messages)
+      {
+        Messages.Add(message);
+      }
+    }
+    public void GameOver()
+    {
+      string from = _game.CurrentRoom.Name;
+      string to = _game.CurrentRoom.Name;
+      string desc = _game.CurrentRoom.Description;
+      int inv = _game.CurrentPlayer.Inventory.Count;
+      if (to == "west")
+      {
+        Item Item = _game.CurrentPlayer.Inventory.Find(x => x.Name == "scissors");
+        if (_game.CurrentRoom.Blocked == true && Item == null)
+        {
+          Messages.Add(@"
+
+                                                       .*                                                    
+                              ,((((,.   *#%##%%,%%(,  %%%##(                                                 
+                              .#%%%%%&&%(((#%####%%%#(%#%%###.   .(                                          
+                                .%%%%%%%%%%((#/##%%%%%(#((#(%(   ##//                                        
+                                  #%%%&&%%%&%#/%##%%%%%%(&%#*(/ (%(//(#                                      
+                          .%%%%%%, ,#%%%%&%##%(#%%#%&&&%#(%#((/ %##(//((                                     
+                           %#(#%#%%%%#%%####%##%//&&%%&%##(%&%/%(/(((//                                    
+                            #%%#%%%%%%%%%%%(((%%#(#%%%#%%%%####/###((#(                                    
+                             %#%###(%%#%#&&&%#(((%#(###&(#&%%%%#%%/####(   #((/                              
+                             %%#%%(((####%%%##//(#(#(%(#(%%&%#%%#(%((  %#(((/.                             
+                      *(##%(((&&%(%&%#%#%#%#(*((/((((##(#((%%(#%&&%(%, %%##(/(#/                             
+                       #/######%&%#((/(###/#***/#/(///((((%%%#%%%%%%#(,%%#%%#(/*                             
+                        (##(*(#(((/((/(#((*/,*///(//#//*#*%//%#(&(%%%%%%%%(#(/*.                             
+                   ,/,  #&#(/(***/(*(((/,.(///*,///#(//(###/%#(%%%%%##/%##(((                              
+                  /(((((#%#(((/*/,,*//#((/*,**/(/*/***((/*,/#(##/#%&&%##%#%.                               
+     .*           //%/*((%/*,,,,.,**//((//*,,*,/**///*,**((*/*#//(###(%%%(%%%#                               
+      #/            #%#%/*,,,**//((#(#((/,,,/,*(***/**,***,(/*#(/(%/%#%#%#(##%%#(#                           
+       #/, //       #(((,,*/***///(((#////,**,*//*.***,,,,***,*(((##/%###&%%#%%%#                            
+       .##,/(#   .%/**,**/*((//((//.. ///*,,/*,*/,,/,,*,.***,,,///((#(#(#&&%#(%&..                           
+         #(/,((////,**//(((*          .(****,,.***,,,,*,,,*,.***/(%(((/##((%#&%%#%#(*#,    ,####%%((/*.      
+            (/*,,**///(/.              */****..//**,,**.*/**.,.**(#(//(/(/#(#%%&&%&%%####%##(**,***/,.     
+             .((///(,                  ,**/,/.,*/,***,,*/,,,*,*,/*((/*//((((((#%%###///#(*(*/*(/***//(       
+                                        */**,,./*#*****,.,*,.,,**/(/((*#/#*(((#///(///***/,*,,/(//*///.      
+                                         *****,,//&,,*,,*,*,*,*,*(//#//**/*//(*/*,*,**////(.                 
+                                         ,//**,**/#/(****,*.,.,,,*(///**,,***/(/,////(/                      
+                                         *******/((%%%%#((((/(/(((,/(**,,*****///////                        
+                                          (/**(//(#&&&&&( .(((((/.,*****(((//((//(,                          
+                                          .((/((((&&&&&(        *,,,,,,,/(###.                               
+                                           /(#/(((%%&&&%        **,,,,,*####(.                               
+                                           %%#(#(%%%%%%&%*      /*(//,*((((#(                                
+                       . .................*%##%%%%%&%#%#,....   /*/,**//(((/(                                
+                                     ......%%%&%(%%,,,.........../*/*////((#%.                               
+                                      ..../#((%(###%/,........,.,.*((/(//(/#%%.                              
+                                         .(,*#(**(#/(...............*#((/(((#///.                            
+                                                                ......(###(((#...                            
+                                                                      .(#*(/(#(/.                            
+                                                                       #(((((,*(,      
+                                                                       
+Due to your loud and clumsy stumbling through the vegetation, you manage to startle a peaceful Stegosaurus feeding with her babies...In her fear, she rampages and you find yourself impaled by the massive spikes on her tail...
+!!!!GAME OVER!!!!
+Play again? Type yes/no
+");
+        }
+        else
+        {
+          Messages.Add("Check your inventory to see if there's anything useful to chop through this vegetation...");
+        }
+      }
+      if (to == "final")
+      {
+        if (inv == 0)
+        {
+          Messages.Add(@"The mighty tyrannosaurus notices you immediately and....speaks?");
+          Messages.Add("The tyrannosaurus grumbles a challenge, claiming that none have ever bested him in a single match of rock, paper, scissors...The game is on, but perhaps you should have taken more time to explore...");
+          Console.Clear();
+        }
+        if (inv < 3 && inv > 0)
+        {
+          Messages.Add("The mighty tyrannosaurus notices you immediately. Without all the relics to defend yourself, your final moments are fleeting. A deafening roar is all you hear before it ends...\n!!!!GAME OVER!!!!\nPlay again?\nType yes/no");
+        }
+        else if (inv == 3)
+        {
+          Messages.Add("Thanks to the relics, you successfully defeat the mighty tyrannosaurus and are able to continue your journey towards regaining your memory in peace...For now...\n****YOU WIN****\nPlay again?\nType yes/no");
+        }
+      }
+    }
     public void UseItem(string itemName)
     {
       if (_game.CurrentRoom.Name == "west")

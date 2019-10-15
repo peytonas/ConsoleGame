@@ -32,7 +32,7 @@ namespace ConsoleAdventure.Project.Controllers
       ");
       Console.ForegroundColor = ConsoleColor.Red;
       Console.WriteLine("You awake lying under a giant fallen log, in the middle of a sweltering junglescape...What's the plan?");
-      Print();
+      _gameService.Print();
       while (playing)
       {
         GetUserInput();
@@ -96,17 +96,6 @@ What do you do?
         case "close":
           Environment.Exit(0);
           break;
-      }
-      //NOTE IE: take silver key => command = "take" option = "silver key"
-
-    }
-
-    //NOTE this should print your messages for the game.
-    private void Print()
-    {
-      foreach (string message in _gameService.Messages)
-      {
-        Console.WriteLine(message);
       }
     }
   }
