@@ -77,17 +77,11 @@ namespace ConsoleAdventure.Project
                                                                 ......(###(((#...                            
                                                                       .(#*(/(#(/.                            
                                                                        #(((((,*(,      
-
+                                                                       
 Due to your loud and clumsy stumbling through the vegetation, you manage to startle a peaceful Stegosaurus feeding with her babies...In her fear, she rampages and you find yourself impaled by the massive spikes in her tail...
 !!!!GAME OVER!!!!Play again?
 Type yes/no");
         }
-        else if (_game.CurrentRoom.Blocked == true)
-        {
-          UseItem("scissors");
-          // _game.CurrentRoom.Blocked = false;
-        }
-
       }
       if (to == "final")
       {

@@ -89,6 +89,7 @@ What do you do?
         case "yes":
           Run();
           break;
+        case "no":
         case "q":
         case "quit":
         case "exit":
@@ -107,7 +108,6 @@ What do you do?
       {
         Console.WriteLine(message);
       }
-      //REVIEW the controller shouldnt clear the message log
     }
   }
 }
